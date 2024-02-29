@@ -4,6 +4,7 @@ import NewPostForm from "../features/posts/NewPostForm";
 import PostDetails from "../features/posts/PostDetails";
 import PostEditForm from "../features/posts/PostEditForm";
 import PostsList from "../features/posts/PostsList";
+
 function AppRoutes() {
     return (
         <Routes>
