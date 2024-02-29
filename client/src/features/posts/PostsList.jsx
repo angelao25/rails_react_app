@@ -17,9 +17,8 @@ function PostsList() {
             } catch(e) {
                 setError(e);
                 setLoading(false);
+                console.error("Failed to fetch posts: ", e);
             }
-
-
         }
         loadPosts();
     }, []);
