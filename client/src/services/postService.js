@@ -14,7 +14,6 @@ async function fetchPost(id) {
         throw new Error(response.statusText);
     }
     return response.json();
-
 }
 
 async function createPost(postData) {
@@ -52,16 +51,17 @@ async function deletePost(id) {
         method: "DELETE",
     });
 
-    if (!response.ok) {
-        throw new Error(response.statusText);
-    }
+
 
     // 204 is No content status
     if (response.status === 204) {
         return null;
     }
 
-    return response.json();
+    throw new Error(response.statusText);
+
+
+
 }
 
 export { createPost, deletePost, fetchAllPosts, fetchPost, updatePost };
