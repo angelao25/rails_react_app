@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchPost, updatePost } from "../../services/postService";
 
@@ -17,6 +16,7 @@ function EditPostForm() {
                 const json = await fetchPost(id);
                 setPost(json);
             } catch (e) {
+                console.error("Failed to fetch the post: ", e);
                 setError(e);
             } finally {
                 setLoading(false);
@@ -33,10 +33,10 @@ function EditPostForm() {
             body: post.body,
         };
         try {
-            const response = await updatePost(id, updatedPost);
-            navigate(`/posts/${response.id}`);
+            await updatePost(id, updatedPost);
+            navigate(`/posts/${id}`);
         } catch (e) {
-            console.error("Failed to udpate post: ", e)
+            console.error("Failed to update the post: ", e)
         }
 
     };
@@ -69,9 +69,6 @@ function EditPostForm() {
                 <div>
                     <button type="submit">Save</button>
                 </div>
-
-
-
             </form>
         </div>
 
